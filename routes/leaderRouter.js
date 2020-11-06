@@ -1,10 +1,10 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 
-const dishRouter = express.Router()
-dishRouter.use(bodyParser.json())
+const leaderRouter = express.Router()
+leaderRouter.use(bodyParser.json())
 
-dishRouter.route('/')
+leaderRouter.route('/')
     .all((req, res,next) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/plain');
@@ -12,11 +12,11 @@ dishRouter.route('/')
     })
 
     .get((req, res,next) => {
-        res.end(`dishes will be sent to your browser`)
+        res.end(`leaders will be sent to your browser`)
     })
 
     .post((req, res,next) => {
-        res.end(`will add dish ${req.body.name} with details ${req.body.description}`)
+        res.end(`will add leaders ${req.body.name} with details ${req.body.description}`)
     })
 
     .put((req, res,next) => {
@@ -28,7 +28,7 @@ dishRouter.route('/')
         res.end(`deleting all operations`)
     })
 
-dishRouter.route('/:dishId')
+leaderRouter.route('/:leadersId')
     .all((req, res,next) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/plain');
@@ -36,11 +36,11 @@ dishRouter.route('/:dishId')
     })
 
     .get((req, res,next) => {
-        res.end('We will send details of the dish: ' + req.params.dishId + ' to you!')
+        res.end('We will send details of the leaders: ' + req.params.leadersId + ' to you!')
     })
 
     .post((req, res,next) => {
-        res.end(`will add dish ${req.body.name} with details ${req.body.description}`)
+        res.end(`will add leaders ${req.body.name} with details ${req.body.description}`)
     })
 
     .put((req, res,next) => {
@@ -52,4 +52,4 @@ dishRouter.route('/:dishId')
         res.end(`deleting all operations`)
     })
 
-module.exports = dishRouter;
+module.exports = leaderRouter;

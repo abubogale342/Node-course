@@ -1,10 +1,10 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 
-const dishRouter = express.Router()
-dishRouter.use(bodyParser.json())
+const promoRouter = express.Router()
+promoRouter.use(bodyParser.json())
 
-dishRouter.route('/')
+promoRouter.route('/')
     .all((req, res,next) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/plain');
@@ -12,7 +12,8 @@ dishRouter.route('/')
     })
 
     .get((req, res,next) => {
-        res.end(`dishes will be sent to your browser`)
+        res.end(`promotions will be sent to your browser`)
+        console.log(req.params)
     })
 
     .post((req, res,next) => {
@@ -28,7 +29,7 @@ dishRouter.route('/')
         res.end(`deleting all operations`)
     })
 
-dishRouter.route('/:dishId')
+promoRouter.route('/:promotions')
     .all((req, res,next) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/plain');
@@ -36,11 +37,11 @@ dishRouter.route('/:dishId')
     })
 
     .get((req, res,next) => {
-        res.end('We will send details of the dish: ' + req.params.dishId + ' to you!')
+        res.end('We will send details of the promotions' + req.params.promotions + ' to you!')
     })
 
     .post((req, res,next) => {
-        res.end(`will add dish ${req.body.name} with details ${req.body.description}`)
+        res.end(`will add promotions {req.body.name} with details ${req.body.description}`)
     })
 
     .put((req, res,next) => {
@@ -52,4 +53,4 @@ dishRouter.route('/:dishId')
         res.end(`deleting all operations`)
     })
 
-module.exports = dishRouter;
+module.exports = promoRouter;
